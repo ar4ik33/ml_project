@@ -9,7 +9,7 @@ import numpy as np
 
 from data.dataclass.predict_pipeline_params import read_predict_pipeline_params
 from data.dataclass.test_params import read_test_params
-from predict_pipeline import get_model_path, save_preds_to_file
+from predict_pipeline import get_model_path, save_predicts_to_file
 from logs.create_logger import create_logger
 
 PATH_TO_CONFIG = "configs/test_config.yaml"
@@ -48,7 +48,7 @@ class PredictPipelineTest(TestCase):
         test_predicts = np.array([0, 1, 1, 0])
 
         predict_pipeline_params = read_predict_pipeline_params(config_path)
-        save_preds_to_file(test_predicts, predict_pipeline_params)
+        save_predicts_to_file(test_predicts, predict_pipeline_params)
         self.assertTrue(os.path.exists("models/predictions/test_predict.csv"))
 
         results = []
